@@ -1,0 +1,13 @@
+# Сторонняя нейросеть
+ONNX-CREStereo-Depth-Estimation/
+
+# Виртуальные окружения
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Модели нейросетей
+*.onnx
