@@ -2,8 +2,8 @@ import cv2
 import os
 
 
-camera_left = cv2.VideoCapture(0, cv2.CAP_V4L2)
-camera_right = cv2.VideoCapture(2, cv2.CAP_V4L2)
+camera_left = cv2.VideoCapture(2, cv2.CAP_V4L2)
+camera_right = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
 for camera in (camera_left, camera_right):
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
