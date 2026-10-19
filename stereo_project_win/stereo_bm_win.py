@@ -8,11 +8,11 @@ import time
 import cv2
 import numpy as np
 
-REAL_DISTANCE_CM = 300.0
+REAL_DISTANCE_CM = 50.0
 NUM_SAMPLES = 50
-LEFT_CAMERA = 0
-RIGHT_CAMERA = 2
-MIN_DISPARITY = -256
+LEFT_CAMERA = 2
+RIGHT_CAMERA = 0
+MIN_DISPARITY = 0
 NUM_DISPARITIES = 256
 BLOCK_SIZE = 15
 ROI_RADIUS = 15
@@ -162,17 +162,17 @@ def main():
             disparity_roi = disparity_raw[y0:y1, x0:x1].astype(np.float32) / 16.0
             
             # Используем этот блок только при положительной диспаратности
-            # valid_disparities = disparity_roi[
-            #     (disparity_roi > max(1, MIN_DISPARITY)) &
-            #     (disparity_roi < MIN_DISPARITY + NUM_DISPARITIES)
-            # ]
+            valid_disparities = disparity_roi[
+                (disparity_roi > max(1, MIN_DISPARITY)) &
+                (disparity_roi < MIN_DISPARITY + NUM_DISPARITIES)
+            ]
 
             # Этот блок используем при отрицательной диспаратности
-            valid_disparities = disparity_roi[
-                (disparity_roi > MIN_DISPARITY - 1) 
-                & (disparity_roi < MIN_DISPARITY + NUM_DISPARITIES) 
-                & (np.abs(disparity_roi) > 1.0)
-            ]
+            # valid_disparities = disparity_roi[
+            #     (disparity_roi > MIN_DISPARITY - 1) 
+            #     & (disparity_roi < MIN_DISPARITY + NUM_DISPARITIES) 
+            #     & (np.abs(disparity_roi) > 1.0)
+            # ]
             valid_count = valid_disparities.size
             valid_percent = 100.0 * valid_count / disparity_roi.size
             distance_cm = None

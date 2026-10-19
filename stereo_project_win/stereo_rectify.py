@@ -60,8 +60,8 @@ map_right_x, map_right_y = cv2.initUndistortRectifyMap(
 # Открываем камеры
 # -----------------------------------
 
-camera_left = cv2.VideoCapture(0)
-camera_right = cv2.VideoCapture(2)
+camera_left = cv2.VideoCapture(2)
+camera_right = cv2.VideoCapture(0)
 
 # ============================================================
 # ПРИНУДИТЕЛЬНО ИСПОЛЬЗУЕМ ИНТЕРФЕЙС MJPG ДЛЯ ФИКСА ЗЕЛЕНЫХ ЗОН
